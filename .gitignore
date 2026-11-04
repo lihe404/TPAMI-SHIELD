@@ -1,0 +1,54 @@
+# Proposed .gitignore for the TPAMI-SHIELD repository root.
+# NOTE: datasets/ in this repository is first-party source code, not a data directory.
+# Documentation images/examples and third-party licenses (e.g. diffattack/LICENSE) are not ignored.
+
+# --- Python caches / build artifacts ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# --- Environment / secrets / editor / OS noise ---
+.venv/
+venv/
+.env
+.env.*
+*.pem
+*.key
+.idea/
+.vscode/
+.DS_Store
+
+# --- Runtime outputs: logs, checkpoints, t-SNE figures, metrics ---
+/outputs/
+/output/
+/runs/
+/logs/
+/checkpoints/
+*.log
+1.txt
+TSNE.txt
+tsne_*.png
+
+# --- Model/data binaries: weights, latent dictionaries, protected-data dicts, archives ---
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.npy
+*.npz
+/*.zip
+/*.tar
+
+# --- Large original binaries shipped in the archive (FID stats, ~96 MB total) ---
+/diffattack/pytorch_fid/car.npz
+/diffattack/pytorch_fid/cub.npz
+/diffattack/pytorch_fid/imagenet.npz
+
+# --- Stage-1 sample-image output placeholders ---
+/boost/
+/bosst_test/
+
+# --- Raw dataset roots, only if raw data is placed inside the repository ---
+/ReIDdata/
+/data/
